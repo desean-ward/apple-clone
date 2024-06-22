@@ -10,6 +10,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
 import { rightImg, watchImg } from "@/utils";
+import VideoCarousel from "../video-carousel/video-carousel-component";
 
 const Highlights = () => {
   useGSAP(() => {
@@ -32,12 +33,16 @@ const Highlights = () => {
               Watch the film
               <Image src={watchImg} alt='watch' className='ml-2' />
             </p>
+
             <p className='link'>
               Watch the event
               <Image src={rightImg} alt='right' className='ml-2' />
             </p>
           </HighlightsLinksContainer>
         </HighlightsTitle>
+
+        {/* Video Carousel */}
+        <VideoCarousel />
       </HighlightsContent>
     </HighlightsContainer>
   );

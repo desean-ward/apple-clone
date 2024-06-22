@@ -41,7 +41,7 @@ const Hero = () => {
     gsap.to("#hero", { opacity: 1, delay: 2 });
 
     {/* Call to Action Animation Code */}
-    gsap.to("#cta", { opacity: 1, y: -75, delay: 2 });
+    gsap.to("#cta", { opacity: 1, y: -100, delay: 2 });
   }, []);
 
   return (
