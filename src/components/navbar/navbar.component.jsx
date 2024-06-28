@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 import { appleImg, searchImg, bagImg } from "../../utils/";
-import { Header, Nav, NavContent, NavItem, SearchBagContainer } from "./navbar-styles";
+import { Header, Nav, NavContent, NavItem, SearchBagContainer } from "./navbar.styles";
 
 import { navLists } from "../../constants";
 

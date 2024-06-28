@@ -5,17 +5,50 @@ import {
   HighlightsContent,
   HighlightsLinksContainer,
   HighlightsTitle,
-} from "./highlights-styles";
+} from "./highlights.styles";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import { rightImg, watchImg } from "@/utils";
-import VideoCarousel from "../video-carousel/video-carousel-component";
+import VideoCarousel from "../video-carousel/video-carousel.component";
 
 const Highlights = () => {
   useGSAP(() => {
-    gsap.to("#title", { opacity: 1, y: 0 });
-    gsap.to(".link", { opacity: 1, y: 0, duration: 1, stagger: 0.25 });
+    gsap.to("#title", {
+      opacity: 1,
+      y: 0,
+      scrollTrigger: {
+        trigger: "#highlights",
+        toggleActions: "restart none none reverse",
+        start: "top 66.3%",
+        // markers: true,
+      },
+    });
+
+    gsap.to("#link1", {
+      opacity: 1,
+      y: 0,
+      stagger: 0.25,
+      scrollTrigger: {
+        trigger: "#link1",
+        toggleActions: "restart none none reverse",
+        start: "top 75%",
+        // markers: true,
+      },
+    });
+
+    gsap.to("#link2", {
+      opacity: 1,
+      y: 0,
+      stagger: 0.25,
+      scrollTrigger: {
+        trigger: "#link2",
+        toggleActions: "restart none none reverse",
+        start: "top 65%",
+        // markers: true,
+      },
+    });
   }, []);
 
   return (
@@ -29,12 +62,12 @@ const Highlights = () => {
 
           {/* Links */}
           <HighlightsLinksContainer>
-            <p className='link'>
+            <p id='link1' className='link'>
               Watch the film
               <Image src={watchImg} alt='watch' className='ml-2' />
             </p>
 
-            <p className='link'>
+            <p id='link2' className='link'>
               Watch the event
               <Image src={rightImg} alt='right' className='ml-2' />
             </p>

@@ -5,7 +5,7 @@ import {
   HeroContainer,
   HeroContent,
   VideoContainer,
-} from "./hero-styles";
+} from "./hero.styles";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -58,7 +58,7 @@ const Hero = () => {
             className='pointer-events-none'
             autoPlay
             muted
-            playsInLine={true}
+            playsInline={true}
             key={videoSrc}
           >
             <source src={videoSrc} type='video/mp4' />

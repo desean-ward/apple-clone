@@ -1,6 +1,7 @@
-import Hero from "@/components/hero/hero-component";
-import Highlights from "@/components/highlights/highlights-component";
-import Navbar from "@/components/navbar/navbar-component";
+import Hero from "@/components/hero/hero.component";
+import Highlights from "@/components/highlights/highlights.component";
+import Navbar from "@/components/navbar/navbar.component";
+import Model from "@/components/model/model.component";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <Navbar />
       <Hero />
       <Highlights />
+      <Model />
     </main>
   );
 };

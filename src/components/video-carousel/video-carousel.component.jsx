@@ -6,13 +6,15 @@ import {
   VideoCarouselWrapper,
   VideoContainer,
   VideoWrapper,
-} from "./video-carousel-styles";
+} from "./video-carousel.styles";
 import { hightlightsSlides } from "@/constants";
 import { playImg, replayImg, pauseImg } from "@/utils";
 import Image from "next/image";
-import { handleClientScriptLoad } from "next/script";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const VideoCarousel = () => {
   // Video Refs
@@ -45,7 +47,7 @@ const VideoCarousel = () => {
     gsap.to("#video", {
       scrollTrigger: {
         trigger: "#video",
-        toggleAction: "restart none none none",
+        toggleActions: "restart none none none",
       },
       onComplete: () => {
         setVideo((pre) => ({
@@ -96,8 +98,8 @@ const VideoCarousel = () => {
                 window.innerWidth < 760
                   ? "10vw"
                   : window.innerWidth < 1200
-                  ? "10vw"
-                  : "4vw",
+                    ? "10vw"
+                    : "4vw",
             });
 
             // Handles the animation of the width of the progress bar
@@ -218,15 +220,21 @@ const VideoCarousel = () => {
         ))}
       </VideoCarouselWrapper>
 
-      <div className='relative mt-10 flex-center'>
-        <div className='py-5 bg-gray-300 rounded-full flex-center px-7 backdrop-blur'>
+      <div
+        id='buttons'
+        className='mt-10 w-full flex-center  relative left-0 y-100'
+      >
+        <div
+          id='btn-container'
+          className='z-10 flex-center py-5 px-7 bg-gray-300 rounded-full backdrop-blur'
+        >
           {videoRef.current.map((_, i) => (
             <span
               key={i}
               ref={(el) => (videoDivRef.current[i] = el)}
-              className='relative w-3 h-3 mx-2 bg-gray-200 rounded-full cursor-pointer bg-[#afafaf]'
+              className='relative w-3 h-3 mx-2 rounded-full cursor-pointer bg-[#afafaf]'
             >
-              <apan
+              <span
                 ref={(el) => (videoSpanRef.current[i] = el)}
                 className='absolute w-full h-full rounded-full'
               />
@@ -234,7 +242,7 @@ const VideoCarousel = () => {
           ))}
         </div>
 
-        <button className='control-btn'>
+        <button id='play-btn' className='control-btn'>
           <Image
             src={isLastVideo ? replayImg : isPlaying ? pauseImg : playImg}
             alt={isLastVideo ? "replay" : !isPlaying ? "pause" : "play"}
@@ -242,8 +250,8 @@ const VideoCarousel = () => {
               isLastVideo
                 ? () => handleProcess("video-reset")
                 : !isPlaying
-                ? () => handleProcess("play")
-                : () => handleProcess("pause")
+                  ? () => handleProcess("play")
+                  : () => handleProcess("pause")
             }
           />
         </button>
