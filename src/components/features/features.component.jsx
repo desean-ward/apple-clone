@@ -20,17 +20,17 @@ const Features = () => {
   const videoRef = useRef();
 
   useGSAP(() => {
-    gsap.to('#exploreVideo', {
-        scrollTrigger: {
-          trigger: '#exploreVideo',
-          toggleActions: "play pause reverse restart",
-          start: "-10% bottom",
-        },
+    gsap.to("#exploreVideo", {
+      scrollTrigger: {
+        trigger: "#exploreVideo",
+        toggleActions: "play pause reverse restart",
+        start: "-10% bottom",
+      },
 
-        onComplete: () => {
-            videoRef.current.play();
-        }
-    })
+      onComplete: () => {
+        videoRef.current.play();
+      },
+    });
 
     animateWithGsap("#features_title", {
       y: 0,
@@ -125,9 +125,10 @@ const Features = () => {
 
                 <div className='flex-1 flex-center'>
                   <p className='feature-text g_text'>
-                    Titanium has one of the best strength-to-weight ratios of any metal, making these our{" "}
+                    Titanium has one of the best strength-to-weight ratios of
+                    any metal, making these our{" "}
                     <span className='text-white'>
-                      lightest pro models ever.
+                      lightest pro models ever.{" "}
                     </span>
                     You'll notice the difference the moment you pick one up.
                   </p>

@@ -1,11 +1,13 @@
-'use client'
+"use client";
 import Hero from "@/components/hero/hero.component";
 import Highlights from "@/components/highlights/highlights.component";
 import Navbar from "@/components/navbar/navbar.component";
 import Model from "@/components/model/model.component";
 
-import * as Sentry from '@sentry/nextjs'
+import * as Sentry from "@sentry/nextjs";
 import Features from "@/components/features/features.component";
+import HowItWorks from "@/components/how-it-works/how-it-works.component";
+import Footer from "@/components/footer/footer.component";
 
 const Home = () => {
   return (
@@ -15,6 +17,8 @@ const Home = () => {
       <Highlights />
       <Model />
       <Features />
+      <HowItWorks />
+      <Footer />
     </main>
   );
 };
