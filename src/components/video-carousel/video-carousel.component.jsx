@@ -226,7 +226,7 @@ const VideoCarousel = () => {
       >
         <div
           id='btn-container'
-          className='z-10 flex-center py-5 px-7 bg-gray-300 rounded-full backdrop-blur'
+          className='flex-center py-5 px-7 bg-gray-300 rounded-full backdrop-blur'
         >
           {videoRef.current.map((_, i) => (
             <span

@@ -17,7 +17,7 @@ import { models, sizes } from "@/constants";
 import { Canvas } from "@react-three/fiber";
 
 import { View } from "@react-three/drei";
-import { animateWithGsapTimeline } from "@/utils/animations";
+import { animateWithGsap, animateWithGsapTimeline } from "@/utils/animations";
 
 const Model = () => {
   const [size, setSize] = useState("small");
@@ -57,15 +57,9 @@ const Model = () => {
   }, [size]);
 
   useGSAP(() => {
-    gsap.to("#heading", {
-      opacity: 1,
+    animateWithGsap("#heading", {
       y: 0,
-      // scrollTrigger: {
-      //   trigger: "#content",
-      //   toggleActions: "restart none none reverse",
-      //   start: "top 66.3%",
-      //   // markers: true,
-      // },
+      opacity: 1,
     });
   }, []);
 

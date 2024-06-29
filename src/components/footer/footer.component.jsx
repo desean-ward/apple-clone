@@ -1,11 +1,19 @@
 import { footerLinks } from "@/constants";
 import React from "react";
+import {
+  CopyrightAndLinks,
+  Divider,
+  FooterContainer,
+  FooterInfo,
+  FooterLinks,
+  FooterWrapper,
+} from "./footer.styles";
 
 const Footer = () => {
   return (
-    <footer className='py-5 sm:px-10 px-5'>
-      <div className='screen-max-width'>
-        <div>
+    <FooterContainer>
+      <FooterWrapper>
+        <FooterInfo>
           <p className='font-semibold text-gray text-xs'>
             More ways to shop:{" "}
             <span className='underline text-blue'>Find an Apple Store</span> or{" "}
@@ -16,18 +24,21 @@ const Footer = () => {
           <p className='font-semibold text-gray text-xs'>
             Or call 000800-040-1966
           </p>
-        </div>
+        </FooterInfo>
 
         {/* Divider line */}
-        <div className='bg-neutral-700 my-5 h-[1px] w-full' />
+        <Divider />
 
         {/* Footer links */}
-        <div className='flex md:flex-row flex-col md:items-center justify-between'>
+        <CopyrightAndLinks>
+          {/* Copyright text */}
           <p className='font-semibold text-gray text-xs'>
-            Copyright &copy;{new Date().getFullYear()} Apple Inc. All rights reserved.
+            Copyright &copy;{new Date().getFullYear()} Apple Inc. All rights
+            reserved.
           </p>
 
-          <div className='flex'>
+          {/* Footer links */}
+          <FooterLinks>
             {footerLinks.map((link, i) => (
               <p key={link} className='font-semibold text-gray text-xs'>
                 {link}{" "}
@@ -36,10 +47,10 @@ const Footer = () => {
                 )}
               </p>
             ))}
-          </div>
-        </div>
-      </div>
-    </footer>
+          </FooterLinks>
+        </CopyrightAndLinks>
+      </FooterWrapper>
+    </FooterContainer>
   );
 };
 

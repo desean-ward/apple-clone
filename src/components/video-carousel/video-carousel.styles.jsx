@@ -31,5 +31,4 @@ export const CarouselText = tw.div`
     absolute 
     top-12 
     left-[5%] 
-    z-10
 `;

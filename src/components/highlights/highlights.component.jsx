@@ -12,18 +12,13 @@ import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import { rightImg, watchImg } from "@/utils";
 import VideoCarousel from "../video-carousel/video-carousel.component";
+import { animateWithGsap } from "@/utils/animations";
 
 const Highlights = () => {
   useGSAP(() => {
-    gsap.to("#title", {
-      opacity: 1,
+    animateWithGsap("#title", {
       y: 0,
-      scrollTrigger: {
-        trigger: "#highlights",
-        toggleActions: "restart none none reverse",
-        start: "top 66.3%",
-        // markers: true,
-      },
+      opacity: 1,
     });
 
     gsap.to("#link1", {

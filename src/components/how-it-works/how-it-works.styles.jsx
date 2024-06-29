@@ -1,7 +1,6 @@
 import tw from "tailwind-styled-components";
 
 export const HowItWorksContainer = tw.section`
-    
 `;
 export const HowItWorksWrapper = tw.div`
     screen-max-width
