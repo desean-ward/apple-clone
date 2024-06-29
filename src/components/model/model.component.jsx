@@ -18,6 +18,7 @@ import { Canvas } from "@react-three/fiber";
 
 import { View } from "@react-three/drei";
 import { animateWithGsap, animateWithGsapTimeline } from "@/utils/animations";
+import Image from "next/image";
 
 const Model = () => {
   const [size, setSize] = useState("small");
@@ -116,10 +117,20 @@ const Model = () => {
               <View.Port />
             </Canvas>
           </ModelImageContainer>
+          
+          <p className='text-sm font-light text-center relative top-[-85px]'>{model.title}</p>
+
+          <div className='w-full flex justify-center items-center relative mb-4 space-x-2'>
+            <div>Drag to rotate </div>
+            <Image
+              src='/assets/images/360-degrees.png'
+              alt='360 degrees'
+              width={100}
+              height={50}
+            />
+          </div>
 
           <div className='mx-auto w-full'>
-            <p className='text-sm font-light text-center mb-5'>{model.title}</p>
-
             <div className='flex-center'>
               <ul className='color-container'>
                 {models.map((item, i) => (

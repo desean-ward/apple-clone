@@ -23,4 +23,4 @@ const Home = () => {
   );
 };
 
-export default Sentry.withProfiler(Home);
+export default Home;
