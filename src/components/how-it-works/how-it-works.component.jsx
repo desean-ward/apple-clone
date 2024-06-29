@@ -50,26 +50,7 @@ const HowItWorks = () => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   const video = videoRef.current;
-
-  //   // Create the GSAP animation with ScrollTrigger
-  //   gsap.to(video, {
-  //     scrollTrigger: {
-  //       trigger: video,
-  //       start: "top center", // Adjust as needed
-  //       onEnter: () => video.play(), // Play the video on entering the viewport
-  //       onLeave: () => video.pause(), // Optional: Pause the video on leaving the viewport
-  //       onEnterBack: () => video.play(), // Play the video again when scrolling back up
-  //       onLeaveBack: () => video.pause(), // Optional: Pause the video on scrolling back up
-  //     },
-  //   });
-
-  //   // Clean up the ScrollTrigger on component unmount
-  //   return () => {
-  //     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-  //   };
-  // }, []);
+  
 
   return (
     <HowItWorksContainer className='common-padding'>
