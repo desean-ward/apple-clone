@@ -14,27 +14,31 @@ import { heroVideo, smallHeroVideo } from "../../utils";
 
 const Hero = () => {
   // Get the width of the window to determine which video to load
-  const [videoSrc, setVideoSrc] = useState(
-    window.innerWidth < 700 ? smallHeroVideo : heroVideo
-  );
+  const [videoSrc, setVideoSrc] = useState(null);
 
-  // Set the video source based on the window width
-  const handleVideoSrcSet = () => {
-    window.innerWidth < 760
-      ? setVideoSrc(smallHeroVideo)
-      : setVideoSrc(heroVideo);
-  };
+  useEffect(() => {
+    setVideoSrc(window.innerWidth < 700 ? smallHeroVideo : heroVideo);
+    console.log("VIDEO SRC:", videoSrc);
+  }, [videoSrc]);
 
   // Set the video source on window resize
   useEffect(() => {
+    // Set the video source based on the window width
+    const handleVideoSrcSet = () => {
+      window.innerWidth < 760
+        ? setVideoSrc(smallHeroVideo)
+        : setVideoSrc(heroVideo);
+    };
+    
     // Add event listener for window resize
     window.addEventListener("resize", handleVideoSrcSet);
+    console.log("VIDEO SRC:", videoSrc);
 
     // Clean Up
     return () => {
       window.removeEventListener("resize", handleVideoSrcSet);
     };
-  }, []);
+  }, [videoSrc]);
 
   useGSAP(() => {
     /* Hero Animation Code */

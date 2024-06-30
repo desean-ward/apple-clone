@@ -40,7 +40,7 @@ export const VideoContainer = tw.div`
     w-full 
     flex 
     items-center
-    mb-5
+    md:mb-5
 `;
 
 export const ImagesContainer = tw.div`
