@@ -55,6 +55,7 @@ const Model = () => {
         duration: 1,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [size]);
 
   useGSAP(() => {
@@ -72,9 +73,9 @@ const Model = () => {
   }, []);
 
   return (
-    <ModelContainer id='model' className='common-padding'>
-      <ModelContent id='content'>
-        <h1 id='heading' className='section-heading'>
+    <ModelContainer id="model" className="common-padding">
+      <ModelContent id="content">
+        <h1 id="heading" className="section-heading">
           Take a closer look.
         </h1>
 
@@ -84,7 +85,7 @@ const Model = () => {
             <ModelView
               index={1}
               groupRef={small}
-              gsapType='view1'
+              gsapType="view1"
               controlRef={cameraControlSmall}
               setRotationState={setSmallRotation}
               item={model}
@@ -95,7 +96,7 @@ const Model = () => {
             <ModelView
               index={2}
               groupRef={large}
-              gsapType='view2'
+              gsapType="view2"
               controlRef={cameraControlLarge}
               setRotationState={setLargeRotation}
               item={model}
@@ -103,7 +104,7 @@ const Model = () => {
             />
 
             <Canvas
-              className='w-full h-full'
+              className="size-full"
               style={{
                 position: "fixed",
                 top: 0,
@@ -117,37 +118,39 @@ const Model = () => {
               <View.Port />
             </Canvas>
           </ModelImageContainer>
-          
-          <p className='text-sm font-light text-center relative top-[-85px]'>{model.title}</p>
 
-          <div className='w-full flex justify-center items-center relative mb-4 space-x-2'>
+          <p className="relative top-[-85px] text-center text-sm font-light">
+            {model.title}
+          </p>
+
+          <div className="relative mb-4 flex w-full items-center justify-center space-x-2">
             <div>Drag to rotate </div>
             <Image
-              src='/assets/images/360-degrees.png'
-              alt='360 degrees'
+              src="/assets/images/360-degrees.png"
+              alt="360 degrees"
               width={100}
               height={50}
             />
           </div>
 
-          <div className='mx-auto w-full'>
-            <div className='flex-center'>
-              <ul className='color-container'>
+          <div className="mx-auto w-full">
+            <div className="flex-center">
+              <ul className="color-container">
                 {models.map((item, i) => (
                   <li
                     key={i}
-                    className='w-6 h-6 rounded-full mx-2 cursor-pointer'
+                    className="mx-2 size-6 cursor-pointer rounded-full"
                     style={{ backgroundColor: item.color[0] }}
                     onClick={() => setModel(item)}
                   />
                 ))}
               </ul>
 
-              <button className='size-btn-container'>
+              <button className="size-btn-container">
                 {sizes.map(({ label, value }) => (
                   <span
                     key={label}
-                    className='size-btn'
+                    className="size-btn"
                     style={{
                       backgroundColor: size === value ? "white" : "transparent",
                       color: size === value ? "black" : "white",

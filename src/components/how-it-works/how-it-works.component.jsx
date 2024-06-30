@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+/* eslint-disable react/no-unescaped-entities */
+import React, { useRef } from "react";
 import {
   ChipImageContainer,
   HeaderContainer,
@@ -50,67 +51,65 @@ const HowItWorks = () => {
     });
   }, []);
 
-  
-
   return (
-    <HowItWorksContainer className='common-padding'>
+    <HowItWorksContainer className="common-padding">
       <HowItWorksWrapper>
-        <ChipImageContainer id='chip'>
-          <Image src={chipImg} alt='chip' width={180} height={180} />
+        <ChipImageContainer id="chip">
+          <Image src={chipImg} alt="chip" width={180} height={180} />
         </ChipImageContainer>
 
         <HeaderContainer>
-          <h2 className='hiw-title'>
+          <h2 className="hiw-title">
             A17 Pro chip.
             <br />A monster win for gaming.
           </h2>
 
-          <p className='hiw-subtitle'>
+          <p className="hiw-subtitle">
             It's here. The biggest redesign in the history of Apple GPUs.
           </p>
         </HeaderContainer>
 
         <VideoContainer>
           <VideoWrapper>
-            <div className='overflow-hidden'>
+            <div className="overflow-hidden">
               <Image
                 src={frameImg}
-                alt='frame'
-                className='bg-transparent relative z-10'
+                alt="frame"
+                className="relative z-10 bg-transparent"
               />
             </div>
-            <div className='hiw-video'>
+            <div className="hiw-video">
               <video
-                id='video'
-                className='pointer-events-none'
+                id="video"
+                className="pointer-events-none"
                 playsInline
-                preload='auto'
+                preload="auto"
                 muted
                 autoPlay
                 ref={videoRef}
               >
-                <source src={frameVideo} type='video/mp4' />
+                <source src={frameVideo} type="video/mp4" />
               </video>
             </div>
           </VideoWrapper>
 
-          <p className='text-gray font-semibold text-center mt-3'>
+          <p className="mt-3 text-center font-semibold text-gray">
             Honkai: Star Rail
           </p>
         </VideoContainer>
 
-        <div className='hiw-text-container flex justify-center'>
-          <div className='flex w-[326px] justify-center flex-col'>
-            <p className='hiw-text g_fadeIn mb-4'>
+        <div className="hiw-text-container flex justify-center">
+          <div className="flex w-[326px] flex-col justify-center">
+            <p className="hiw-text g_fadeIn mb-4">
               A17 Pro is an entirely new class of iPhone chip that delivers our{" "}
-              <span className='text-white'>
+              <span className="text-white">
                 best graphic performance by far.
               </span>
             </p>
 
-            <p className='hiw-text g_fadeIn'>
+            <p className="hiw-text g_fadeIn">
               Mobile{" "}
-              <span className='text-white'>
+              <span className="text-white">
                 games will look and feel so immersive
               </span>
               , with incredibly detailed environments and characters. And with
@@ -119,10 +118,10 @@ const HowItWorks = () => {
             </p>
           </div>
 
-          <div className='flex justify-center flex-col g_fadeIn mt-[-5rem] md:mt-0'>
-            <p className='hiw-text'>New</p>
-            <p className='hiw-bigtext'>Pro-class GPU</p>
-            <p className='hiw-text'>with 6 cores</p>
+          <div className="g_fadeIn -mt-20 flex flex-col justify-center md:mt-0">
+            <p className="hiw-text">New</p>
+            <p className="hiw-bigtext">Pro-class GPU</p>
+            <p className="hiw-text">with 6 cores</p>
           </div>
         </div>
       </HowItWorksWrapper>

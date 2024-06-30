@@ -8,7 +8,6 @@ import {
 } from "./highlights.styles";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import { rightImg, watchImg } from "@/utils";
 import VideoCarousel from "../video-carousel/video-carousel.component";
@@ -47,24 +46,24 @@ const Highlights = () => {
   }, []);
 
   return (
-    <HighlightsContainer id='highlights'>
+    <HighlightsContainer id="highlights">
       <HighlightsContent>
         {/* Title */}
         <HighlightsTitle>
-          <h1 id='title' className='section-heading'>
+          <h1 id="title" className="section-heading">
             Get the highlights.
           </h1>
 
           {/* Links */}
           <HighlightsLinksContainer>
-            <p id='link1' className='link'>
+            <p id="link1" className="link">
               Watch the film
-              <Image src={watchImg} alt='watch' className='ml-2' />
+              <Image src={watchImg} alt="watch" className="ml-2" />
             </p>
 
-            <p id='link2' className='link'>
+            <p id="link2" className="link">
               Watch the event
-              <Image src={rightImg} alt='right' className='ml-2' />
+              <Image src={rightImg} alt="right" className="ml-2" />
             </p>
           </HighlightsLinksContainer>
         </HighlightsTitle>

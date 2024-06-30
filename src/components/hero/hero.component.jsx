@@ -37,10 +37,10 @@ const Hero = () => {
   }, []);
 
   useGSAP(() => {
-    {/* Hero Animation Code */}
+    /* Hero Animation Code */
     gsap.to("#hero", { opacity: 1, delay: 2 });
 
-    {/* Call to Action Animation Code */}
+    /* Call to Action Animation Code */
     gsap.to("#cta", { opacity: 1, y: -100, delay: 2 });
   }, []);
 
@@ -48,32 +48,32 @@ const Hero = () => {
     <HeroContainer>
       <HeroContent>
         {/* Hero Title */}
-        <p id='hero' className='hero-title'>
+        <p id="hero" className="hero-title">
           iPhone 15 Pro
         </p>
 
         {/* Video Container */}
         <VideoContainer>
           <video
-            className='pointer-events-none'
+            className="pointer-events-none"
             autoPlay
             muted
             playsInline={true}
             key={videoSrc}
           >
-            <source src={videoSrc} type='video/mp4' />
+            <source src={videoSrc} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </VideoContainer>
       </HeroContent>
 
       {/* Call to Action Button */}
-      <HeroCallToAction id='cta'>
-        <a href='highlights' className='btn'>
+      <HeroCallToAction id="cta">
+        <a href="highlights" className="btn">
           Buy
         </a>
 
-        <p className='text-xl font-normal'>From $199/month or $999</p>
+        <p className="text-xl font-normal">From $199/month or $999</p>
       </HeroCallToAction>
     </HeroContainer>
   );

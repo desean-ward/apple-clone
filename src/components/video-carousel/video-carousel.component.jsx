@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
 
 import {
@@ -81,11 +82,11 @@ const VideoCarousel = () => {
     let currentProgress = 0;
 
     // Get the current video element
-    let span = videoSpanRef.current;
+    const span = videoSpanRef.current;
 
     if (span[videoId]) {
       // animate the progress of the video
-      let anim = gsap.to(span[videoId], {
+      const anim = gsap.to(span[videoId], {
         onUpdate: () => {
           const progress = Math.ceil(anim.progress() * 100);
 
@@ -177,14 +178,14 @@ const VideoCarousel = () => {
       <VideoCarouselWrapper>
         {hightlightsSlides.map((list, i) => (
           // Video Slider
-          <Slider key={list.id} id='slider'>
-            <VideoWrapper className='video-carousel_container'>
+          <Slider key={list.id} id="slider">
+            <VideoWrapper className="video-carousel_container">
               {/* Video Player */}
               <VideoContainer>
                 <video
-                  id='video'
+                  id="video"
                   playsInline={true}
-                  preload='auto'
+                  preload="auto"
                   muted
                   className={`${
                     list.id === 2 && "translate-x-44"
@@ -203,14 +204,14 @@ const VideoCarousel = () => {
                   }
                   onLoadedMetadata={(e) => handleLoadedMetadata(i, e)}
                 >
-                  <source src={list.video} type='video/mp4' />
+                  <source src={list.video} type="video/mp4" />
                 </video>
               </VideoContainer>
 
               {/* Video Caption */}
               <CarouselText>
                 {list.textLists.map((text) => (
-                  <p key={text} className='text-xl font-medium md:text-2xl'>
+                  <p key={text} className="text-xl font-medium md:text-2xl">
                     {text}
                   </p>
                 ))}
@@ -220,29 +221,26 @@ const VideoCarousel = () => {
         ))}
       </VideoCarouselWrapper>
 
-      <div
-        id='buttons'
-        className='mt-10 w-full flex-center  relative left-0 y-100'
-      >
+      <div id="buttons" className="flex-center relative left-0 mt-10 w-full">
         <div
-          id='btn-container'
-          className='flex-center py-5 px-7 bg-gray-300 rounded-full backdrop-blur'
+          id="btn-container"
+          className="flex-center rounded-full bg-gray-300 px-7 py-5 backdrop-blur"
         >
           {videoRef.current.map((_, i) => (
             <span
               key={i}
               ref={(el) => (videoDivRef.current[i] = el)}
-              className='relative w-3 h-3 mx-2 rounded-full cursor-pointer bg-[#afafaf]'
+              className="relative mx-2 size-3 cursor-pointer rounded-full bg-[#afafaf]"
             >
               <span
                 ref={(el) => (videoSpanRef.current[i] = el)}
-                className='absolute w-full h-full rounded-full'
+                className="absolute size-full rounded-full"
               />
             </span>
           ))}
         </div>
 
-        <button id='play-btn' className='control-btn'>
+        <button id="play-btn" className="control-btn">
           <Image
             src={isLastVideo ? replayImg : isPlaying ? pauseImg : playImg}
             alt={isLastVideo ? "replay" : !isPlaying ? "pause" : "play"}
