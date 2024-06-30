@@ -28,6 +28,7 @@ const Model = () => {
     img: yellowImg,
   });
 
+  /* Three.js refs */
   const cameraControlSmall = useRef();
   const cameraControlLarge = useRef();
   const small = useRef(new THREE.Group());
@@ -42,6 +43,7 @@ const Model = () => {
 
   // useEffect for timeline animation between large and small views
   useEffect(() => {
+    // Small view animation
     if (size === "large") {
       animateWithGsapTimeline(tl, small, smallRotation, "#view1", "#view2", {
         transform: "translateX(-100%)",
@@ -49,6 +51,7 @@ const Model = () => {
       });
     }
 
+    // Large view animation
     if (size === "small") {
       animateWithGsapTimeline(tl, large, largeRotation, "#view2", "#view1", {
         transform: "translateX(0)",
@@ -65,12 +68,15 @@ const Model = () => {
     });
   }, []);
 
+  const [rootElement, setRootElement] = useState(null);
+
   useEffect(() => {
-    const rootElement = document.getElementById("root");
+    setRootElement(document.getElementById("root"));
+
     if (!rootElement) {
       console.error("Root element not found");
     }
-  }, []);
+  }, [rootElement]);
 
   return (
     <ModelContainer id="model" className="common-padding">
@@ -113,7 +119,7 @@ const Model = () => {
                 right: 0,
                 pointerEvents: "none", // Ensure Canvas does not intercept pointer events
               }}
-              eventSource={document.getElementById("root")}
+              eventSource={rootElement}
             >
               <View.Port />
             </Canvas>
