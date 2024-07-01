@@ -1,7 +1,6 @@
 import tw from "tailwind-styled-components";
 
 export const Header = tw.header`
-    fixed
     z-10
     bg-black
     w-full
@@ -17,7 +16,7 @@ export const Header = tw.header`
 
 export const Nav = tw.nav`
     flex
-    w-full 
+    w-full
 `;
 
 export const NavContent = tw.div`
@@ -47,25 +46,30 @@ export const SearchBagContainer = tw.div`
 export const MobileNav = tw.div`
     flex 
     flex-col
+    justify-center
     bg-black
     fixed
     inset-0
+    w-full
     z-20
     opacity-0
     hidden
+    overscroll-none
+    overflow-hidden
 `;
 
 export const CloseButtonContainer = tw.div`
-    w-full
+    w-screen
     flex 
     justify-end
     p-5
-    mb-5
 `;
 
 export const MobileNavContent = tw.div`
     absolute
-    inset-0 
+    top-[-4rem]
+    h-full
+    screen-max-width
     flex
     flex-col
     items-center

@@ -26,5 +26,6 @@ export const CopyrightAndLinks = tw.div`
 `;
 
 export const FooterLinks = tw.div`
-    flex
+    flex 
+    flex-wrap
 `;

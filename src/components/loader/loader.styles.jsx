@@ -1,7 +1,7 @@
 import tw from "tailwind-styled-components";
 
 export const LoaderContainer = tw.div`
-    relative
+    absolute 
     top-0 
     left-0 
     w-full 
@@ -9,6 +9,4 @@ export const LoaderContainer = tw.div`
     flex 
     justify-center 
     items-center 
-    bg-purple
-    z-10
 `;

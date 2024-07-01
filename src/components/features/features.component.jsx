@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable tailwindcss/no-custom-classname */
 import React, { useRef } from "react";
 import {
   ContentContainer,
@@ -61,12 +59,13 @@ const Features = () => {
   return (
     <FeaturesContainer className="common-padding">
       <FeaturesContent>
+        <SectionHeaderContainer>
+          <h1 id="features_title" className="section-heading">
+            Explore the full story.
+          </h1>
+        </SectionHeaderContainer>
+
         <ContentContainer>
-          <SectionHeaderContainer>
-            <h1 id="features_title" className="section-heading">
-              Explore the full story.
-            </h1>
-          </SectionHeaderContainer>
           <ContentHeader>
             <h2 className="text-5xl font-semibold sm:text-7xl">iPhone.</h2>
 
@@ -80,7 +79,7 @@ const Features = () => {
               <video
                 playsInline
                 id="exploreVideo"
-                className="size-full object-cover object-center"
+                className="object-cover object-center w-full h-full"
                 preload="none"
                 muted
                 autoPlay
@@ -96,6 +95,8 @@ const Features = () => {
                 <FeatureImage>
                   <Image
                     src={explore1Img}
+                    height={"100%"}
+                    width={"100%"}
                     alt="titanium"
                     className="feature-video g_grow"
                   />
@@ -110,30 +111,32 @@ const Features = () => {
                   />
                 </FeatureImage>
               </div>
+
+              <div className="feature-text-container">
+                <div className="flex-1 flex-center">
+                  <p className="feature-text g_text">
+                    iPhone 15 Pro is{" "}
+                    <span className="text-white">
+                      the first iPhone to feature an aerospace-grade titanium
+                      design
+                    </span>
+                    , using the same alloy tha spacecrafts use for missions to
+                    Mars.
+                  </p>
+                </div>
+
+                <div className="flex-1 flex-center">
+                  <p className="feature-text g_text">
+                    Titanium has one of the best strength-to-weight ratios of
+                    any metal, making these our{" "}
+                    <span className="text-white">
+                      lightest pro models ever.
+                    </span>
+                    You'll notice the difference the moment you pick one up.
+                  </p>
+                </div>
+              </div>
             </ImagesContainer>
-
-            <div className="feature-text-container">
-              <div className="flex-center flex-1">
-                <p className="feature-text g_text">
-                  iPhone 15 Pro is{" "}
-                  <span className="text-white">
-                    the first iPhone to feature an aerospace-grade titanium
-                    design
-                  </span>
-                  , using the same alloy tha spacecrafts use for missions to
-                  Mars.
-                </p>
-              </div>
-
-              <div className="flex-center flex-1">
-                <p className="feature-text g_text">
-                  Titanium has one of the best strength-to-weight ratios of any
-                  metal, making these our{" "}
-                  <span className="text-white">lightest pro models ever. </span>
-                  You'll notice the difference the moment you pick one up.
-                </p>
-              </div>
-            </div>
           </VideoAndImagesContainer>
         </ContentContainer>
       </FeaturesContent>

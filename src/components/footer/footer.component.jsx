@@ -14,14 +14,14 @@ const Footer = () => {
     <FooterContainer>
       <FooterWrapper>
         <FooterInfo>
-          <p className="text-xs font-semibold text-gray">
+          <p className='mb-2 text-xs font-semibold text-gray'>
             More ways to shop:{" "}
-            <span className="text-blue underline">Find an Apple Store</span> or{" "}
-            <span className="text-blue underline">other retailer</span> near
+            <span className='underline text-blue'>Find an Apple Store</span> or{" "}
+            <span className='underline text-blue'>other retailer</span> near
             you.
           </p>
 
-          <p className="text-xs font-semibold text-gray">
+          <p className='text-xs font-semibold text-gray'>
             Or call 000800-040-1966
           </p>
         </FooterInfo>
@@ -32,7 +32,7 @@ const Footer = () => {
         {/* Footer links */}
         <CopyrightAndLinks>
           {/* Copyright text */}
-          <p className="text-xs font-semibold text-gray">
+          <p className='mb-4 text-xs font-semibold text-gray'>
             Copyright &copy;{new Date().getFullYear()} Apple Inc. All rights
             reserved.
           </p>
@@ -40,10 +40,10 @@ const Footer = () => {
           {/* Footer links */}
           <FooterLinks>
             {footerLinks.map((link, i) => (
-              <p key={link} className="text-xs font-semibold text-gray">
+              <p key={link} className='text-xs font-semibold text-gray'>
                 {link}{" "}
                 {i !== footerLinks.length - 1 && (
-                  <span className="mx-2">|</span>
+                  <span className='mx-2'>|</span>
                 )}
               </p>
             ))}

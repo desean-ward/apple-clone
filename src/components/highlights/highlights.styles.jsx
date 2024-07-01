@@ -12,7 +12,7 @@ export const HighlightsContent = tw.div`
     screen-max-width 
 `;
 
-export const HighlightsTitle = tw.div`
+export const HighlightsTitle = tw.h1`
     mb-12 
     w-full 
     md:flex

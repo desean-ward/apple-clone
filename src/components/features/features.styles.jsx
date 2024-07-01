@@ -23,9 +23,9 @@ export const ContentContainer = tw.div`
 `;
 
 export const ContentHeader = tw.div`
-    mt-32 
+    mt-12 md:mt-32 
     mb-24 
-    pl-24
+    pl-8 md:pl-24
 `;
 
 export const VideoAndImagesContainer = tw.div`
@@ -40,7 +40,7 @@ export const VideoContainer = tw.div`
     w-full 
     flex 
     items-center
-    md:mb-5
+    mb-5
 `;
 
 export const ImagesContainer = tw.div`

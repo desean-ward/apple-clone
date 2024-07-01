@@ -109,6 +109,7 @@ const Navbar = () => {
             onClick={handleMobileNav}
           />
         </CloseButtonContainer>
+        
         <MobileNavContent>
           {navLists.map((nav, i) => (
             <NavItem key={nav} className="text-3xl">

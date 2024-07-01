@@ -1,5 +1,3 @@
-/* eslint-disable tailwindcss/classnames-order */
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
 
 import {
@@ -9,12 +7,13 @@ import {
   VideoContainer,
   VideoWrapper,
 } from "./video-carousel.styles";
-import { hightlightsSlides } from "@/constants";
-import { playImg, replayImg, pauseImg } from "@/utils";
-import Image from "next/image";
+import { hightlightsSlides } from "../../constants";
+
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import { pauseImg, playImg, replayImg } from "@/utils";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,7 +34,7 @@ const VideoCarousel = () => {
 
   const [loadedData, setLoadedData] = useState([]);
 
-  // Video Controls (destructured from video state)
+  // Video Controls
   const { isEnd, startPlay, videoId, isLastVideo, isPlaying } = video;
 
   // Handles the animation of the carousel videos
@@ -50,6 +49,8 @@ const VideoCarousel = () => {
       scrollTrigger: {
         trigger: "#video",
         toggleActions: "restart none none none",
+        start: "top bottom",
+        // markers: true,
       },
       onComplete: () => {
         setVideo((pre) => ({
@@ -63,9 +64,8 @@ const VideoCarousel = () => {
 
   // Handles the video loading, this will trigger the useEffect to auto-start the video
   const handleLoadedMetadata = (i, e) => setLoadedData((pre) => [...pre, e]);
-  console.log(loadedData);
 
-  // Deals with the video playing when data is loaded
+  // Deals with the video playing is data is loaded
   useEffect(() => {
     if (loadedData.length > 3) {
       // If startPlay is true, pause the video
@@ -99,10 +99,10 @@ const VideoCarousel = () => {
             gsap.to(videoDivRef.current[videoId], {
               width:
                 window.innerWidth < 760
-                  ? "10vw"
+                  ? "10vw" //phone
                   : window.innerWidth < 1200
-                    ? "10vw"
-                    : "4vw",
+                    ? "10vw" // tablet
+                    : "4vw", // laptop
             });
 
             // Handles the animation of the width of the progress bar
@@ -164,12 +164,10 @@ const VideoCarousel = () => {
 
       case "pause":
         setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
-        console.log(video);
         break;
 
       case "play":
         setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
-        console.log(video);
         break;
 
       default:
@@ -234,11 +232,11 @@ const VideoCarousel = () => {
             <span
               key={i}
               ref={(el) => (videoDivRef.current[i] = el)}
-              className="relative mx-2 size-3 cursor-pointer rounded-full bg-[#afafaf]"
+              className="relative mx-2 size-3 cursor-pointer  rounded-full bg-[#afafaf]"
             >
               <span
                 ref={(el) => (videoSpanRef.current[i] = el)}
-                className="absolute rounded-full size-full "
+                className="rounded-full size-full"
               />
             </span>
           ))}

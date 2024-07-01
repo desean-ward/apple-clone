@@ -5,6 +5,7 @@ export const HeroContainer = tw.section`
     nav-height 
     bg-black 
     relative
+    top-[-4rem]
 `;
 export const HeroContent = tw.div`
     h-5/6 //83% of the viewport height
@@ -14,10 +15,8 @@ export const HeroContent = tw.div`
 `;
 
 export const VideoContainer = tw.div`
-    // md:w-10/12 w-9/12 //83%/75% of the viewport width
-    md:w-[1220px] 
+    w-9/12 md:w-[1220px] 
     h-[300px]
-    w-9/12
 `;
 
 export const HeroCallToAction = tw.div`

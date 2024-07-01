@@ -9,7 +9,6 @@ import {
 } from "./model.styles";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import ModelView from "../model-view/model-view.component";
 import * as THREE from "three";
 import { yellowImg } from "@/utils";
 import { models, sizes } from "@/constants";
@@ -18,6 +17,7 @@ import { Canvas } from "@react-three/fiber";
 
 import { View } from "@react-three/drei";
 import { animateWithGsap, animateWithGsapTimeline } from "@/utils/animations";
+import ModelView from "../model-view/model-view.componet";
 import Image from "next/image";
 
 const Model = () => {
@@ -28,7 +28,6 @@ const Model = () => {
     img: yellowImg,
   });
 
-  /* Three.js refs */
   const cameraControlSmall = useRef();
   const cameraControlLarge = useRef();
   const small = useRef(new THREE.Group());
@@ -43,7 +42,6 @@ const Model = () => {
 
   // useEffect for timeline animation between large and small views
   useEffect(() => {
-    // Small view animation
     if (size === "large") {
       animateWithGsapTimeline(tl, small, smallRotation, "#view1", "#view2", {
         transform: "translateX(-100%)",
@@ -51,14 +49,12 @@ const Model = () => {
       });
     }
 
-    // Large view animation
     if (size === "small") {
       animateWithGsapTimeline(tl, large, largeRotation, "#view2", "#view1", {
         transform: "translateX(0)",
         duration: 1,
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [size]);
 
   useGSAP(() => {
@@ -68,15 +64,12 @@ const Model = () => {
     });
   }, []);
 
-  const [rootElement, setRootElement] = useState(null);
-
   useEffect(() => {
-    setRootElement(document.getElementById("root"));
-
+    const rootElement = document.getElementById("root");
     if (!rootElement) {
       console.error("Root element not found");
     }
-  }, [rootElement]);
+  }, []);
 
   return (
     <ModelContainer id="model" className="common-padding">
@@ -110,7 +103,7 @@ const Model = () => {
             />
 
             <Canvas
-              className="size-full"
+              className="w-full h-full"
               style={{
                 position: "fixed",
                 top: 0,
@@ -119,17 +112,18 @@ const Model = () => {
                 right: 0,
                 pointerEvents: "none", // Ensure Canvas does not intercept pointer events
               }}
-              eventSource={rootElement}
+              eventSource={document.getElementById("root")}
             >
               <View.Port />
             </Canvas>
           </ModelImageContainer>
 
+          <div className="w-full mx-auto">
           <p className="relative top-[-85px] text-center text-sm font-light">
-            {model.title}
-          </p>
-
-          <div className="relative mb-4 flex w-full items-center justify-center space-x-2">
+          {model.title}
+        </p>
+            
+            <div className="relative flex items-center justify-center w-full mb-4 space-x-2">
             <div>Drag to rotate </div>
             <Image
               src="/assets/images/360-degrees.png"
@@ -139,13 +133,12 @@ const Model = () => {
             />
           </div>
 
-          <div className="mx-auto w-full">
             <div className="flex-center">
               <ul className="color-container">
                 {models.map((item, i) => (
                   <li
                     key={i}
-                    className="mx-2 size-6 cursor-pointer rounded-full"
+                    className="w-6 h-6 mx-2 rounded-full cursor-pointer"
                     style={{ backgroundColor: item.color[0] }}
                     onClick={() => setModel(item)}
                   />
