@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
 
@@ -34,7 +35,7 @@ const VideoCarousel = () => {
 
   const [loadedData, setLoadedData] = useState([]);
 
-  // Video Controls
+  // Video Controls (destructured from video state)
   const { isEnd, startPlay, videoId, isLastVideo, isPlaying } = video;
 
   // Handles the animation of the carousel videos
@@ -62,8 +63,9 @@ const VideoCarousel = () => {
 
   // Handles the video loading, this will trigger the useEffect to auto-start the video
   const handleLoadedMetadata = (i, e) => setLoadedData((pre) => [...pre, e]);
+  console.log(loadedData);
 
-  // Deals with the video playing is data is loaded
+  // Deals with the video playing when data is loaded
   useEffect(() => {
     if (loadedData.length > 3) {
       // If startPlay is true, pause the video
@@ -162,10 +164,12 @@ const VideoCarousel = () => {
 
       case "pause":
         setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
+        console.log(video);
         break;
 
       case "play":
         setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
+        console.log(video);
         break;
 
       default:
@@ -221,10 +225,10 @@ const VideoCarousel = () => {
         ))}
       </VideoCarouselWrapper>
 
-      <div id="buttons" className="flex-center relative left-0 mt-10 w-full">
+      <div id="buttons" className="relative mt-10 flex-center">
         <div
           id="btn-container"
-          className="flex-center rounded-full bg-gray-300 px-7 py-5 backdrop-blur"
+          className="py-5 bg-gray-300 rounded-full flex-center px-7 backdrop-blur"
         >
           {videoRef.current.map((_, i) => (
             <span
@@ -234,7 +238,7 @@ const VideoCarousel = () => {
             >
               <span
                 ref={(el) => (videoSpanRef.current[i] = el)}
-                className="absolute size-full rounded-full"
+                className="absolute rounded-full size-full "
               />
             </span>
           ))}

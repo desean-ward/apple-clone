@@ -1,6 +1,9 @@
 import tw from "tailwind-styled-components";
 
 export const HowItWorksContainer = tw.section`
+    w-full    
+    max-w-screen
+    overflow-hidden
 `;
 export const HowItWorksWrapper = tw.div`
     screen-max-width
