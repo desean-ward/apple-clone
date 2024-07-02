@@ -43,3 +43,8 @@ next-env.d.ts
 
 # Sentry Example Directory
 sentry-example-page/
+# Sentry Config File
+.env.sentry-build-plugin
+
+# Sentry Config File
+.env.sentry-build-plugin

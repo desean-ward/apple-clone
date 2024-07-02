@@ -37,6 +37,9 @@ const Model = () => {
   const [smallRotation, setSmallRotation] = useState(0);
   const [largeRotation, setLargeRotation] = useState(0);
 
+  // Hold the state for 'eventSource' of Canvas component
+  const [eventSrc, setEventSrc] = useState(null);
+
   // Timeline Animation
   const tl = gsap.timeline();
 
@@ -69,8 +72,10 @@ const Model = () => {
     const rootElement = document.getElementById("root");
     if (!rootElement) {
       console.error("Root element not found");
+    } else {
+      setEventSrc(rootElement);
     }
-  }, []);
+  }, [eventSrc]);
 
   return (
     <ModelContainer id="model" className="common-padding">
@@ -113,7 +118,7 @@ const Model = () => {
                 right: 0,
                 pointerEvents: "none", // Ensure Canvas does not intercept pointer events
               }}
-              eventSource={document.getElementById("root")}
+              eventSource={eventSrc}
             >
               <View.Port />
             </Canvas>

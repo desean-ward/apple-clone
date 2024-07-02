@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { appleImg, searchImg, bagImg } from "../../utils/";
 import {
@@ -23,6 +23,12 @@ const Navbar = () => {
   // Mobile Nav State
   const [showMobileNav, setShowMobileNav] = useState(false);
 
+  // Document Body State
+  const [body, setBody] = useState(document.body);
+  useEffect(() => {
+    setBody(document.body);
+  }, []);
+
   // Handle Mobile Nav State
   const handleMobileNav = () => {
     setShowMobileNav((prev) => !prev);
@@ -44,7 +50,7 @@ const Navbar = () => {
       );
 
       // Disable scrolling when mobile nav is open
-      document.body.classList.add("no-scroll");
+      body.classList.add("no-scroll");
     } else {
       gsap.to("#mobile-nav", {
         x: "100vw",
@@ -55,7 +61,7 @@ const Navbar = () => {
       });
 
       // Enable scrolling when mobile nav is closed
-      document.body.classList.remove("no-scroll");
+      body.classList.remove("no-scroll");
     }
   }, [showMobileNav]);
 
