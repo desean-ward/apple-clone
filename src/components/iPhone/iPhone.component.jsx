@@ -6,7 +6,7 @@ Source: https://sketchfab.com/3d-models/apple-iphone-15-pro-max-black-df17520841
 Title: Apple iPhone 15 Pro Max Black
 */
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -15,10 +15,11 @@ function IPhone(props) {
 
   const texture = useTexture(props.item.img.src);
   console.log("IMAGE: ", props.item.img.src);
-  {
-    /* Handles the color change of the phone */
-  }
+  
+    // Handles the color change of the phone 
+  
   useEffect(() => {
+    // eslint-disable-next-line array-callback-return
     Object.entries(materials).map((material) => {
       // these are the material names that can't be changed color
       if (
@@ -31,7 +32,7 @@ function IPhone(props) {
         material[1].color = new THREE.Color(props.item.color[0]);
       }
       material[1].needsUpdate = true;
-    });
+    }); 
   }, [materials, props.item]);
 
   return (

@@ -8,7 +8,6 @@ import {
 } from "./highlights.styles";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import { rightImg, watchImg } from "@/utils";
 import VideoCarousel from "../video-carousel/video-carousel.component";

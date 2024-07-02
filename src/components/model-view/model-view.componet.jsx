@@ -1,10 +1,9 @@
 "use client";
 import React, { Suspense } from "react";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera, View } from "@react-three/drei";
 import Lights from "../lights/lights.component";
 import IPhone from "../iPhone/iPhone.component";
 import { extend } from "@react-three/fiber";
-import { View } from "@react-three/drei";
 import * as THREE from "three";
 import Loader from "../loader/loader.component";
 
@@ -25,7 +24,7 @@ const ModelView = ({
       <View
         index={index}
         id={gsapType}
-        className={`size-full absolute cursor-pointer ${index === 2 ? "right-[-100%]" : ""}`}
+        className={`absolute size-full cursor-pointer ${index === 2 ? "-right-full" : ""}`}
       >
         <ambientLight intensity={0.3} />
 

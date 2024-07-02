@@ -55,6 +55,7 @@ const Model = () => {
         duration: 1,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [size]);
 
   useGSAP(() => {
@@ -103,7 +104,7 @@ const Model = () => {
             />
 
             <Canvas
-              className="w-full h-full"
+              className="size-full"
               style={{
                 position: "fixed",
                 top: 0,
@@ -118,27 +119,27 @@ const Model = () => {
             </Canvas>
           </ModelImageContainer>
 
-          <div className="w-full mx-auto">
-          <p className="relative top-[-85px] text-center text-sm font-light">
-          {model.title}
-        </p>
-            
-            <div className="relative flex items-center justify-center w-full mb-4 space-x-2">
-            <div>Drag to rotate </div>
-            <Image
-              src="/assets/images/360-degrees.png"
-              alt="360 degrees"
-              width={100}
-              height={50}
-            />
-          </div>
+          <div className="mx-auto w-full">
+            <p className="relative top-[-85px] text-center text-sm font-light">
+              {model.title}
+            </p>
+
+            <div className="relative mb-4 flex w-full items-center justify-center space-x-2">
+              <div>Drag to rotate </div>
+              <Image
+                src="/assets/images/360-degrees.png"
+                alt="360 degrees"
+                width={100}
+                height={50}
+              />
+            </div>
 
             <div className="flex-center">
               <ul className="color-container">
                 {models.map((item, i) => (
                   <li
                     key={i}
-                    className="w-6 h-6 mx-2 rounded-full cursor-pointer"
+                    className="mx-2 size-6 cursor-pointer rounded-full"
                     style={{ backgroundColor: item.color[0] }}
                     onClick={() => setModel(item)}
                   />
