@@ -105,11 +105,11 @@ const Navbar = () => {
         <CloseButtonContainer>
           <RiCloseFill
             size={28}
-            className="z-10 border cursor-pointer"
+            className="z-10 cursor-pointer border"
             onClick={handleMobileNav}
           />
         </CloseButtonContainer>
-        
+
         <MobileNavContent>
           {navLists.map((nav, i) => (
             <NavItem key={nav} className="text-3xl">

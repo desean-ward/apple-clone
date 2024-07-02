@@ -16,8 +16,8 @@ const Footer = () => {
         <FooterInfo>
           <p className="mb-2 text-xs font-semibold text-gray">
             More ways to shop:{" "}
-            <span className="underline text-blue">Find an Apple Store</span> or{" "}
-            <span className="underline text-blue">other retailer</span> near
+            <span className="text-blue underline">Find an Apple Store</span> or{" "}
+            <span className="text-blue underline">other retailer</span> near
             you.
           </p>
 

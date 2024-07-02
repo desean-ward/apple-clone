@@ -99,7 +99,7 @@ const VideoCarousel = () => {
             gsap.to(videoDivRef.current[videoId], {
               width:
                 window.innerWidth < 760
-                  ? "10vw" //phone
+                  ? "10vw" // phone
                   : window.innerWidth < 1200
                     ? "10vw" // tablet
                     : "4vw", // laptop
@@ -145,7 +145,7 @@ const VideoCarousel = () => {
         gsap.ticker.remove(animUpdate);
       }
     }
-  }, [videoId, startPlay]);
+  }, [videoId, startPlay, isPlaying]);
 
   // Handles the state of the play button
   const handleProcess = (type, i) => {
@@ -223,10 +223,10 @@ const VideoCarousel = () => {
         ))}
       </VideoCarouselWrapper>
 
-      <div id="buttons" className="relative mt-10 flex-center">
+      <div id="buttons" className="flex-center relative mt-10">
         <div
           id="btn-container"
-          className="py-5 bg-gray-300 rounded-full flex-center px-7 backdrop-blur"
+          className="flex-center rounded-full bg-gray-300 px-7 py-5 backdrop-blur"
         >
           {videoRef.current.map((_, i) => (
             <span
@@ -236,7 +236,7 @@ const VideoCarousel = () => {
             >
               <span
                 ref={(el) => (videoSpanRef.current[i] = el)}
-                className="rounded-full size-full"
+                className="size-full rounded-full"
               />
             </span>
           ))}

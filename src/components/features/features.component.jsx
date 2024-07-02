@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import React, { useRef } from "react";
 import {
   ContentContainer,
@@ -79,7 +80,7 @@ const Features = () => {
               <video
                 playsInline
                 id="exploreVideo"
-                className="object-cover object-center w-full h-full"
+                className="size-full object-cover object-center"
                 preload="none"
                 muted
                 autoPlay
@@ -113,7 +114,7 @@ const Features = () => {
               </div>
 
               <div className="feature-text-container">
-                <div className="flex-1 flex-center">
+                <div className="flex-center flex-1">
                   <p className="feature-text g_text">
                     iPhone 15 Pro is{" "}
                     <span className="text-white">
@@ -125,14 +126,15 @@ const Features = () => {
                   </p>
                 </div>
 
-                <div className="flex-1 flex-center">
+                <div className="flex-center flex-1">
                   <p className="feature-text g_text">
                     Titanium has one of the best strength-to-weight ratios of
                     any metal, making these our{" "}
                     <span className="text-white">
                       lightest pro models ever.
                     </span>
-                    You'll notice the difference the moment you pick one up.
+                    You&apos;ll notice the difference the moment you pick one
+                    up.
                   </p>
                 </div>
               </div>

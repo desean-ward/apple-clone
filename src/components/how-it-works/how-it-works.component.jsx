@@ -75,7 +75,7 @@ const HowItWorks = () => {
               <Image
                 src={frameImg}
                 alt="frame"
-                className="relative bg-transparent z-1"
+                className="relative z-10 bg-transparent"
               />
             </div>
             <div className="hiw-video">
@@ -93,14 +93,14 @@ const HowItWorks = () => {
             </div>
           </VideoWrapper>
 
-          <p className="mt-3 font-semibold text-center text-gray">
+          <p className="mt-3 text-center font-semibold text-gray">
             Honkai: Star Rail
           </p>
         </VideoContainer>
 
-        <div className="flex justify-center hiw-text-container">
-          <div className="flex w-[326px] flex-col justify-center mx-auto md:mx-0">
-            <p className="mb-4 hiw-text g_fadeIn">
+        <div className="hiw-text-container flex justify-center">
+          <div className="mx-auto flex w-[326px] flex-col justify-center md:mx-0">
+            <p className="hiw-text g_fadeIn mb-4">
               A17 Pro is an entirely new class of iPhone chip that delivers our{" "}
               <span className="text-white">
                 best graphic performance by far.
@@ -118,7 +118,7 @@ const HowItWorks = () => {
             </p>
           </div>
 
-          <div className="relative flex flex-col justify-center ml-2 -mt-20 g_fadeIn md:mt-0 md:ml-0">
+          <div className="g_fadeIn relative -mt-20 ml-2 flex flex-col justify-center md:ml-0 md:mt-0">
             <p className="hiw-text">New</p>
             <p className="hiw-bigtext">Pro-class GPU</p>
             <p className="hiw-text">with 6 cores</p>
