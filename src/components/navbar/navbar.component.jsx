@@ -24,7 +24,7 @@ const Navbar = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
 
   // Document Body State
-  const [body, setBody] = useState(document.body);
+  const [body, setBody] = useState(null);
   useEffect(() => {
     setBody(document.body);
   }, []);
@@ -111,7 +111,7 @@ const Navbar = () => {
         <CloseButtonContainer>
           <RiCloseFill
             size={28}
-            className="z-10 cursor-pointer border"
+            className="z-10 border cursor-pointer"
             onClick={handleMobileNav}
           />
         </CloseButtonContainer>
