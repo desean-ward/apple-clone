@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -23,16 +24,26 @@ const Navbar = () => {
   // Mobile Nav State
   const [showMobileNav, setShowMobileNav] = useState(false);
 
-  // Document Body State
-  const [body, setBody] = useState(null);
-  useEffect(() => {
-    setBody(document.body);
-  }, []);
-
   // Handle Mobile Nav State
   const handleMobileNav = () => {
     setShowMobileNav((prev) => !prev);
   };
+
+  // Document Body State
+  useEffect(() => {
+      const docBody = document.body;
+
+      if (showMobileNav) {
+        docBody.classList.add("no-scroll");
+      } else {
+        docBody.classList.remove("no-scroll");
+      }
+
+      // Cleanup function
+      return () => {
+        docBody.classList.remove("no-scroll");
+      };
+  }, [showMobileNav]);
 
   // Animate Mobile Nav
   useGSAP(() => {
@@ -48,9 +59,6 @@ const Navbar = () => {
           ease: "power3.inOut",
         }
       );
-
-      // Disable scrolling when mobile nav is open
-      body.classList.add("no-scroll");
     } else {
       gsap.to("#mobile-nav", {
         x: "100vw",
@@ -59,9 +67,6 @@ const Navbar = () => {
         duration: 1,
         ease: "power3.inOut",
       });
-
-      // Enable scrolling when mobile nav is closed
-      body.classList.remove("no-scroll");
     }
   }, [showMobileNav]);
 

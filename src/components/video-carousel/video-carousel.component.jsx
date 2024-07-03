@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import {
   CarouselText,
   Slider,
@@ -8,8 +7,7 @@ import {
   VideoWrapper,
 } from "./video-carousel.styles";
 import { hightlightsSlides } from "../../constants";
-
-import { useGSAP } from "@gsap/react";
+// import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { pauseImg, playImg, replayImg } from "@/utils";
@@ -23,7 +21,6 @@ const VideoCarousel = () => {
   const videoSpanRef = useRef([]);
   const videoDivRef = useRef([]);
 
-  // Video State
   const [video, setVideo] = useState({
     isEnd: false,
     startPlay: false,
@@ -32,47 +29,43 @@ const VideoCarousel = () => {
     isPlaying: false,
   });
 
+  // Video Controls
+  const { startPlay, videoId, isLastVideo, isPlaying } = video;
+
+  // Video State
   const [loadedData, setLoadedData] = useState([]);
 
-  // Video Controls
-  const { isEnd, startPlay, videoId, isLastVideo, isPlaying } = video;
-
-  // Handles the animation of the carousel videos
-  useGSAP(() => {
+  useEffect(() => {
+    // Handles the animation of the carousel videos
     gsap.to("#slider", {
       transform: `translateX(${-100 * videoId}%)`,
       duration: 2,
       ease: "power2.inOut",
     });
 
-    gsap.to("#video", {
-      scrollTrigger: {
-        trigger: "#video",
-        toggleActions: "restart none none none",
-        start: "top bottom",
-        // markers: true,
-      },
-      onComplete: () => {
-        setVideo((pre) => ({
-          ...pre,
+    ScrollTrigger.create({
+      trigger: videoRef.current[videoId],
+      start: "top bottom",
+      onEnter: () => {
+        setVideo((prev) => ({
+          ...prev,
           startPlay: true,
           isPlaying: true,
         }));
+        videoRef.current[videoId].play();
       },
     });
-  }, [isEnd, videoId]);
+  }, [videoId]);
 
   // Handles the video loading, this will trigger the useEffect to auto-start the video
   const handleLoadedMetadata = (i, e) => setLoadedData((pre) => [...pre, e]);
 
-  // Deals with the video playing is data is loaded
+  // Deals with the video playing when data is loaded
   useEffect(() => {
-    if (loadedData.length > 3) {
-      // If startPlay is true, pause the video
+    if (loadedData.length >= hightlightsSlides.length) {
       if (!isPlaying) {
         videoRef.current[videoId].pause();
       } else {
-        // If we're playing, start the video
         startPlay && videoRef.current[videoId].play();
       }
     }
@@ -80,14 +73,10 @@ const VideoCarousel = () => {
 
   // Keeps track of the loaded data
   useEffect(() => {
-    // Set Current Progress
     let currentProgress = 0;
-
-    // Get the current video element
     const span = videoSpanRef.current;
 
     if (span[videoId]) {
-      // animate the progress of the video
       const anim = gsap.to(span[videoId], {
         onUpdate: () => {
           const progress = Math.ceil(anim.progress() * 100);
@@ -95,24 +84,21 @@ const VideoCarousel = () => {
           if (progress !== currentProgress) {
             currentProgress = progress;
 
-            // Handels the width of the progress bar
             gsap.to(videoDivRef.current[videoId], {
               width:
                 window.innerWidth < 760
-                  ? "10vw" // phone
+                  ? "10vw"
                   : window.innerWidth < 1200
-                    ? "10vw" // tablet
-                    : "4vw", // laptop
+                    ? "10vw"
+                    : "4vw",
             });
 
-            // Handles the animation of the width of the progress bar
             gsap.to(span[videoId], {
               width: `${currentProgress}%`,
               backgroundColor: "white",
             });
           }
         },
-
         onComplete: () => {
           if (isPlaying) {
             gsap.to(videoDivRef.current[videoId], {
@@ -129,7 +115,6 @@ const VideoCarousel = () => {
         anim.restart();
       }
 
-      // update the progress bar
       const animUpdate = () => {
         anim.progress(
           videoRef.current[videoId].currentTime /
@@ -138,16 +123,13 @@ const VideoCarousel = () => {
       };
 
       if (isPlaying) {
-        // ticker to update the progress bar
         gsap.ticker.add(animUpdate);
       } else {
-        // remove the ticker when the video is paused (progress bar is stopped)
         gsap.ticker.remove(animUpdate);
       }
     }
   }, [videoId, startPlay, isPlaying]);
 
-  // Handles the state of the play button
   const handleProcess = (type, i) => {
     switch (type) {
       case "video-end":
@@ -179,10 +161,8 @@ const VideoCarousel = () => {
     <>
       <VideoCarouselWrapper>
         {hightlightsSlides.map((list, i) => (
-          // Video Slider
           <Slider key={list.id} id="slider">
             <VideoWrapper className="video-carousel_container">
-              {/* Video Player */}
               <VideoContainer>
                 <video
                   id="video"
@@ -209,8 +189,6 @@ const VideoCarousel = () => {
                   <source src={list.video} type="video/mp4" />
                 </video>
               </VideoContainer>
-
-              {/* Video Caption */}
               <CarouselText>
                 {list.textLists.map((text) => (
                   <p key={text} className="text-xl font-medium md:text-2xl">
@@ -222,7 +200,6 @@ const VideoCarousel = () => {
           </Slider>
         ))}
       </VideoCarouselWrapper>
-
       <div id="buttons" className="flex-center relative mt-10">
         <div
           id="btn-container"
@@ -241,11 +218,10 @@ const VideoCarousel = () => {
             </span>
           ))}
         </div>
-
         <button id="play-btn" className="control-btn">
           <Image
             src={isLastVideo ? replayImg : isPlaying ? pauseImg : playImg}
-            alt={isLastVideo ? "replay" : !isPlaying ? "pause" : "play"}
+            alt={isLastVideo ? "replay" : isPlaying ? "pause" : "play"}
             onClick={
               isLastVideo
                 ? () => handleProcess("video-reset")
